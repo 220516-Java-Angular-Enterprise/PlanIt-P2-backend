@@ -46,6 +46,8 @@ https://rapidapi.com/tipsters/api/booking-com/
 ### Wireframe
 
 
+
+
 ![image](https://user-images.githubusercontent.com/105670057/174421907-d99ae1b5-eaad-40f5-8bf6-586f4d68ff9f.png)
 ![image](https://user-images.githubusercontent.com/105670057/174421919-2a7559c2-c8c3-4c05-a023-f5b77396ef79.png)
 ![image](https://user-images.githubusercontent.com/105670057/174421926-d8094ba8-ae27-4838-bdf9-7385ab9091e7.png)
