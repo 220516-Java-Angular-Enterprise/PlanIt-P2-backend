@@ -1,7 +1,7 @@
-package com.revature.planit.users;
+package com.revature.planit.user;
 
-import com.revature.planit.login.requests.LoginRequest;
-import com.revature.planit.users.dtos.requests.NewUserRequest;
+import com.revature.planit.login.dtos.requests.LoginRequest;
+import com.revature.planit.user.dtos.NewUserRequest;
 import com.revature.planit.util.annotations.Inject;
 import com.revature.planit.util.custom_exceptions.AuthenticationException;
 import com.revature.planit.util.custom_exceptions.InvalidRequestException;

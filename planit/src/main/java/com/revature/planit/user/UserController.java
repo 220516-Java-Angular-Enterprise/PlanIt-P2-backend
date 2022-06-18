@@ -1,6 +1,6 @@
-package com.revature.planit.users;
+package com.revature.planit.user;
 
-import com.revature.planit.users.dtos.requests.NewUserRequest;
+import com.revature.planit.user.dtos.NewUserRequest;
 import com.revature.planit.util.annotations.Inject;
 import com.revature.planit.util.custom_exceptions.InvalidRequestException;
 import com.revature.planit.util.custom_exceptions.ResourceConflictException;
