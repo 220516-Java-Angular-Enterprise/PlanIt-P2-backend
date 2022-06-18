@@ -40,3 +40,11 @@ https://rapidapi.com/sharemap-sharemap-default/api/travel-places/details
 https://rapidapi.com/tipsters/api/booking-com/ 
 ## Flow Chart
 ![PlanIt drawio](https://user-images.githubusercontent.com/101686660/174396700-ec52db06-55d3-4fab-ac55-f1cffa85ae2f.png)
+
+### Wireframe
+
+
+![image](https://user-images.githubusercontent.com/105670057/174421907-d99ae1b5-eaad-40f5-8bf6-586f4d68ff9f.png)
+![image](https://user-images.githubusercontent.com/105670057/174421919-2a7559c2-c8c3-4c05-a023-f5b77396ef79.png)
+![image](https://user-images.githubusercontent.com/105670057/174421926-d8094ba8-ae27-4838-bdf9-7385ab9091e7.png)
+![image](https://user-images.githubusercontent.com/105670057/174421934-27702112-3995-42a8-88bc-6e96f1521597.png)
