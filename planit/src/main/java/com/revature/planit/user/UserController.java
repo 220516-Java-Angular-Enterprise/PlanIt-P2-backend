@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -22,7 +23,13 @@ public class UserController {
     @Inject
     @Autowired
     public UserController(UserService userService){
+
         this.userService = userService;
+    }
+
+    @GetMapping
+    public @ResponseBody List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
