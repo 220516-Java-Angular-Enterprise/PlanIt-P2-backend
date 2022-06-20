@@ -18,8 +18,8 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "role", nullable = false)
+    private String role;
 
 
 
@@ -27,17 +27,17 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String name) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.role = role;
     }
 
-    public User(String id, String username, String password, String name) {
+    public User(String id, String username, String password, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.role = role;
     }
 
     public String getId() {
@@ -65,11 +65,11 @@ public class User {
     }
 
     public String getRole() {
-        return name;
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String role) {
+        this.role = role;
     }
 
 //    public List<Review> getReviews() {
@@ -86,7 +86,7 @@ public class User {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

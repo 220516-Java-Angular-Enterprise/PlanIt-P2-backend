@@ -11,14 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-@ComponentScan({"com.delivery.request"})
-@EntityScan("com.delivery.domain")
-@EnableJpaRepositories("com.delivery.repository")
 public class PlanitDriver {
     public static void main(String[] args) {
         SpringApplication.run(PlanitDriver.class, args);
-        System.setProperty("server.servlet.context-path", "/planit");
-
     }
 }
