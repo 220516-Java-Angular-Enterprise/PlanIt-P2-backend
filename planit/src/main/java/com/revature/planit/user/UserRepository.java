@@ -9,8 +9,6 @@ import java.util.List;
 
 
 
-
-@Repository
 public interface UserRepository extends CrudRepository<User, String> {
     @Modifying
     @Query(value = "INSERT INTO users (id, username, password, role) VALUES (?1, ?2, crypt(?3, gen_salt('bf')), ?4)", nativeQuery = true)
@@ -21,5 +19,4 @@ public interface UserRepository extends CrudRepository<User, String> {
 
     @Query(value = "SELECT * FROM users WHERE username = ?1 AND password = crypt(?2, password)", nativeQuery = true)
     User getUserByUsernameAndPassword(String username, String password);
-
 }
