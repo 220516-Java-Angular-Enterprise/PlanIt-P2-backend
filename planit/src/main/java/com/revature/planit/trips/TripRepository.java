@@ -32,7 +32,7 @@ public interface TripRepository extends CrudRepository<Trips, String> {
 
     //not sure if we will add status of the given itinerary,
     // but if we do, maybe we would have "saved", "favorite","pending"
-    @Query(value = "SELECT * FROM trip WHERE status ='saved' AND user_id = ?", nativeQuery = true)
+    @Query(value = "SELECT * FROM trip WHERE status ='favorite' AND user_id = ?", nativeQuery = true)
     List<Trips> getSavedTripsByUserID(String user_id);
 
 

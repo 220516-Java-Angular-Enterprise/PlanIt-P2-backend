@@ -1,6 +1,7 @@
 package com.revature.planit.trips;
 
 import com.revature.planit.trips.dtos.requests.NewTripRequest;
+import com.revature.planit.trips.dtos.requests.UpdateTripStatusRequest;
 import com.revature.planit.util.annotations.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,8 +48,8 @@ public class TripService {
         tripRepo.updateDestination(destination,trip_id);
     }
 
-    public void updateStatus(String status, String id){
-        tripRepo.updateStatus(status,id);
+    public void updateStatus(UpdateTripStatusRequest request){
+        tripRepo.updateStatus(request.getStatus(), request.getTrip_id());
     }
 
 

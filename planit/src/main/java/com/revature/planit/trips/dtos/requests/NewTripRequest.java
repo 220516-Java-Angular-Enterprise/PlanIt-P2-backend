@@ -1,16 +1,19 @@
 package com.revature.planit.trips.dtos.requests;
 
 import com.revature.planit.trips.Trips;
+import com.revature.planit.user.User;
 
 public class NewTripRequest {
     private String hotel;
     private String destination;
     private String status;
+    private String user_id;
 
-    public NewTripRequest(String hotel, String destination, String status) {
+    public NewTripRequest(String hotel, String destination, String status, String user_id) {
         this.hotel = hotel;
         this.destination = destination;
         this.status = status;
+        this.user_id = user_id;
     }
 
     public String getHotel() {
@@ -37,13 +40,24 @@ public class NewTripRequest {
         this.status = status;
     }
 
-    public Trips extractTrip(){return new Trips(hotel,destination,status);}
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public Trips extractTrip() {
+        return new Trips(hotel,destination,status);
+    }
     @Override
     public String toString() {
         return "NewTripRequest{" +
                 "hotel='" + hotel + '\'' +
                 ", destination='" + destination + '\'' +
                 ", status='" + status + '\'' +
+                ", user_id='" + user_id + '\'' +
                 '}';
     }
 }
