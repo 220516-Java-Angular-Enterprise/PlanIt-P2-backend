@@ -1,11 +1,15 @@
 package com.revature.planit.trips;
 
 import com.revature.planit.user.User;
-
 import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="trips")
+@Table(name = "trip")
+
 public class Trips {
     @Id
     private String id;
