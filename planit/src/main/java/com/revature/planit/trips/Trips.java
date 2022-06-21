@@ -2,6 +2,7 @@
 
 
 package com.revature.planit.trips;
+import com.revature.planit.dayplan.Dayplan;
 import com.revature.planit.user.User;
 import javax.persistence.*;
 import javax.persistence.Column;
@@ -22,9 +23,9 @@ public class Trips {
 
     @Column(name = "status")
     private String status;
-//    @OneToMany
-//    @JoinColumn(name="day_plan_ID", nullable = false)
-//    private DayPlan dayPlan;
+    @OneToMany
+    @JoinColumn(name="day_plan_ID", nullable = false)
+    private Dayplan dayplan;
 
     @ManyToOne
     @JoinColumn(name="user_id",nullable=false)
