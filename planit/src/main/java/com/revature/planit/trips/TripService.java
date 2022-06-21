@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -23,35 +24,34 @@ public class TripService {
     //need to add more information in order to save new trip
     //can add more when model is done
     public Trips saveTrip(NewTripRequest tripRequest){
-        Trips trips = new Trips(tripRequest.getHotel(), tripRequest.getNight_activity(), tripRequest.getDay_activity(), tripRequest.getFood());
-
-        //tripRepo.saveTrip(tripRequest.getDay_activity(),tripRequest.getHotel(),tripRequest.getNight_activity(),tripRequest.getFood());
-        return trips;
+        Trips trips = tripRequest.extractTrip();
+        trips.setId(UUID.randomUUID().toString());
+        tripRepo.saveTrip(trips.getId(),trips.getDestination(),trips.getHotel(),trips.getStatus(), String.valueOf(trips.getUser()));
+       return trips;
     }
 
     public List<Trips> getAllTripsByUser(String user_id){
         return (List<Trips>) tripRepo.getAllTripsByUserId(user_id);
     }
+    public List<Trips> getAllTrips(){return (List<Trips>) tripRepo.getAllTrips();}
 
     public List<Trips> getSavedTripsByUserId(String user_id){
         return (List<Trips>) tripRepo.getSavedTripsByUserID(user_id);
     }
 
-//    public void updateTripActivities(String day_activity, String night_activity, String food, String trip_id){
-//        tripRepo.updateTripActivities(day_activity, night_activity, food, trip_id);
-//    }
-//    public void updateTripDayActivities(String day_activity,String trip_id){
-//        tripRepo.updateTripDayActivities(day_activity,trip_id);
-//    }
-//    public void updateTripNightActivities(String night_activity, String trip_id){
-//        tripRepo.updateTripNightActivities(night_activity,trip_id);
-//    }
-//    public void updateTripFoodActivities(String food, String trip_id){
-//        tripRepo.updateTripFoodActivities(food,trip_id);
-//    }
-//    public void updateHotel(String hotel, String trip_id){
-//        tripRepo.updateTripHotel(hotel,trip_id);
-//    }
+
+    public void updateHotel(String hotel, String trip_id){
+        tripRepo.updateHotel(hotel,trip_id);
+    }
+    public void updateDestination(String destination, String trip_id){
+        tripRepo.updateDestination(destination,trip_id);
+    }
+
+    public void updateStatus(String status, String id){
+        tripRepo.updateStatus(status,id);
+    }
+
+
 
 
 }

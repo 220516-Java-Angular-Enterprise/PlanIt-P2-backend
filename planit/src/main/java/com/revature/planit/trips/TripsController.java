@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -26,16 +25,24 @@ public class TripsController{
         this.tripService = tripService;
     }
 
-    @GetMapping
-    public @ResponseBody List<Trips> getAllTrips() {
-        return tripService.getAllTripsByUser();
-    }
+
+    @CrossOrigin
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String register(@RequestBody NewTripRequest request) {
         return tripService.saveTrip(request).getId();
     }
+
+
+    @CrossOrigin
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<Trips> getAllTrips() {
+        return tripService.getAllTrips();
+    }
+
+
+
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
