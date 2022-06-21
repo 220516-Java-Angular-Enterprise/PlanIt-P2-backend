@@ -30,6 +30,8 @@ public class Trips {
     @JoinColumn(name="user_id",nullable=false)
     private User user;
 
+    public Trips() {
+    }
 
     public Trips(String id, String destination, String hotel, String status, User user) {
         this.id = id;
