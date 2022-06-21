@@ -2,6 +2,7 @@ package com.revature.planit.dayplan;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.revature.planit.dayplan.dtos.NewDayPlanRequest;
 import com.revature.planit.tripplan.TripPlan;
 
 import javax.persistence.*;
@@ -33,6 +34,15 @@ public class Dayplan {
 @JsonManagedReference
 private TripPlan tripPlan;
     public Dayplan() {
+    }
+
+    public Dayplan(String id, NewDayPlanRequest request) {
+        this.id=id;
+        this.day_of_trip=request.getDay_of_trip();
+        this.day_activity=request.getDay_activity();
+        this.night_activity= request.getNight_activity();
+        this.restaurant=request.getRestaurant();
+        this.category= request.getCategory();
     }
 
     public String getId() {
