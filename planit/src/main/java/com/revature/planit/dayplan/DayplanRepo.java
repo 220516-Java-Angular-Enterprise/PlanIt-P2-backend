@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DayplanRepo extends CrudRepository<Dayplan,String> {
-
+Dayplan findDayPlanById(String id);
 }
