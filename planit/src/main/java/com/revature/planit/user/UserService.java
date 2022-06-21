@@ -42,7 +42,7 @@ public class UserService {
             if (isValidUsername(user.getUsername())) {
                 if (isValidPassword(user.getPassword())) {
                     user.setId(UUID.randomUUID().toString());
-                    userRepo.saveUser(user.getId(), user.getUsername(), user.getPassword(), user.getRole());
+                    userRepo.saveUser(user.getId(), user.getUsername(), user.getPassword(), user.getfName());
                 } else throw new InvalidRequestException("Invalid password. Minimum eight characters, at least one letter, one number and one special character.");
             } else throw new InvalidRequestException("Invalid username. Username needs to be 8-20 characters long.");
         } else throw new ResourceConflictException("Username is already taken :(");

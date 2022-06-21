@@ -6,7 +6,7 @@ public class NewUserRequest {
     private String username;
     private String password;
 
-    private final String role = "DEFAULT";
+    private String fName;
 
     public NewUserRequest() {
         super();
@@ -33,11 +33,11 @@ public class NewUserRequest {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getfName() {
+        return fName;
     }
     public User extractUser() {
-        return new User(username, password, role);
+        return new User(username, password, fName);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class NewUserRequest {
         return "NewUserRequest{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", fName='" + fName + '\'' +
                 '}';
     }
 }

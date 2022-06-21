@@ -1,9 +1,10 @@
 package com.revature.planit.user;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.revature.planit.trips.Trips;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -18,26 +19,32 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role", nullable = false)
-    private String role;
+    @Column(name = "fName", nullable = false)
+    private String fName;
 
-
+    @OneToMany(
+            mappedBy = "user",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    @JsonManagedReference
+    private List <Trips> trips;
 
 
     public User() {
     }
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, String fName) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.fName = fName;
     }
 
-    public User(String id, String username, String password, String role) {
+    public User(String id, String username, String password, String fName) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.fName = fName;
     }
 
     public String getId() {
@@ -64,21 +71,14 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getfName() {
+        return fName;
+    }
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
 
-//    public List<Review> getReviews() {
-//        return reviews;
-//    }
-
-//    public void setReviews(List<Review> reviews) {
-//        this.reviews = reviews;
-//    }
 
     @Override
     public String toString() {
@@ -86,7 +86,7 @@ public class User {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", fName='" + fName + '\'' +
                 '}';
     }
 }
