@@ -1,7 +1,7 @@
 
 
-package com.revature.planit.trips;
 
+package com.revature.planit.trips;
 import com.revature.planit.user.User;
 import javax.persistence.*;
 import javax.persistence.Column;
@@ -19,14 +19,17 @@ public class Trips {
     private String destination;
     @Column(name="hotel",nullable = false)
     private String hotel;
+
     @Column(name = "status")
     private String status;
 //    @OneToMany
 //    @JoinColumn(name="day_plan_ID", nullable = false)
 //    private DayPlan dayPlan;
+
     @ManyToOne
     @JoinColumn(name="user_id",nullable=false)
     private User user;
+
 
     public Trips(String id, String destination, String hotel, String status, User user) {
         this.id = id;
@@ -47,6 +50,9 @@ public class Trips {
         this.destination = destination;
         this.hotel = hotel;
         this.status = status;
+
+ 
+
     }
 
     public String getId() {
@@ -73,6 +79,7 @@ public class Trips {
         this.hotel = hotel;
     }
 
+
     public String getStatus() {
         return status;
     }
@@ -87,6 +94,8 @@ public class Trips {
 
     public void setUser(User user) {
         this.user = user;
+
+   
     }
 
     @Override
@@ -95,11 +104,15 @@ public class Trips {
                 "id='" + id + '\'' +
                 ", destination='" + destination + '\'' +
                 ", hotel='" + hotel + '\'' +
+
                 ", status='" + status + '\'' +
                 ", user=" + user +
+
                 '}';
     }
 }
+
+
 
 
 
