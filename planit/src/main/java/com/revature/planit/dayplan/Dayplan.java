@@ -1,8 +1,7 @@
 package com.revature.planit.dayplan;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.revature.planit.dayplan.dtos.NewDayPlanRequest;
+import com.revature.planit.dayplan.dtos.requests.NewDayPlanRequest;
 import com.revature.planit.tripplan.TripPlan;
 
 import javax.persistence.*;

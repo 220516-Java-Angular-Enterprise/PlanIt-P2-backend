@@ -1,4 +1,4 @@
-package com.revature.planit.dayplan.dtos;
+package com.revature.planit.dayplan.dtos.requests;
 
 public class NewDayPlanRequest {
     private int day_of_trip;

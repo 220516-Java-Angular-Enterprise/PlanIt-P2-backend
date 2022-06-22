@@ -2,32 +2,34 @@ package com.revature.planit.tripplan;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.revature.planit.dayplan.Dayplan;
+import com.revature.planit.trips.Trips;
+import org.springframework.data.repository.CrudRepository;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="tripplan")
 public class TripPlan {
+    @EmbeddedId
+TripPlanRepositoryKey id;
     @ManyToOne()
     @JoinColumn(name="trip_id",nullable = false)
     @JsonBackReference
-    private Trip trip;
+    public Trips trip;
+
     @ManyToOne()
     @JoinColumn(name="dayplan_id",nullable = false)
     @JsonBackReference
-    private Dayplan dayplan;
+    public Dayplan dayplan;
 
     public TripPlan() {
     }
 
-    public Trip getTrip() {
+    public Trips getTrip() {
         return trip;
     }
 
-    public void setTrip(Trip trip) {
+    public void setTrip(Trips trip) {
         this.trip = trip;
     }
 

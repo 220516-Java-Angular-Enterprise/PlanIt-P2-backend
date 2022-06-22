@@ -1,6 +1,6 @@
 package com.revature.planit.dayplan;
 
-import com.revature.planit.dayplan.dtos.NewDayPlanRequest;
+import com.revature.planit.dayplan.dtos.requests.NewDayPlanRequest;
 import com.revature.planit.util.annotations.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,4 +31,28 @@ public class DayPlanService {
         return dayplan.getId();
     }
 
+    public Dayplan updateDayPlan(Dayplan dayplan) {
+        return dayplanRepo.save(dayplan);
+    }
+
+    public void deleteDayPlan(String id) {
+        dayplanRepo.deleteDayPlanById(id);
+    }
+
+    public void updateDayActivity(String day_activity, String id) {
+        dayplanRepo.updateDayActivity(day_activity,id);
+        
+    }
+
+    public void updateNightActivity(String night_activity, String id) {
+        dayplanRepo.updateNightActivity(night_activity,id);
+    }
+
+    public void updateRestaurant(String restaurant, String id) {
+        dayplanRepo.updateRestaurant(restaurant,id);
+    }
+
+    public void updateCategory(String category, String id) {
+        dayplanRepo.updateCategory(category,id);
+    }
 }
