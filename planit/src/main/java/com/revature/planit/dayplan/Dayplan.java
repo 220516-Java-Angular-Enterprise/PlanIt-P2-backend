@@ -1,8 +1,8 @@
 package com.revature.planit.dayplan;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.revature.planit.tripplan.TripPlan;
+import com.revature.planit.dayplan.dtos.requests.NewDayPlanRequest;
+
 
 import javax.persistence.*;
 
@@ -26,13 +26,22 @@ public class Dayplan {
 
     @Column(name="category",nullable = false)
     private String category;
-@OneToMany
-        (mappedBy = "dayplan",
-        fetch = FetchType.EAGER,
-        cascade = CascadeType.ALL)
-@JsonManagedReference
-private TripPlan tripPlan;
+//@OneToMany
+//        (mappedBy = "dayplan",
+//        fetch = FetchType.EAGER,
+//        cascade = CascadeType.ALL)
+//@JsonManagedReference
+//private TripPlan tripPlan;
     public Dayplan() {
+    }
+
+    public Dayplan(String id, NewDayPlanRequest request) {
+        this.id=id;
+        this.day_of_trip=request.getDay_of_trip();
+        this.day_activity=request.getDay_activity();
+        this.night_activity= request.getNight_activity();
+        this.restaurant=request.getRestaurant();
+        this.category= request.getCategory();
     }
 
     public String getId() {
@@ -83,13 +92,13 @@ private TripPlan tripPlan;
         this.category = category;
     }
 
-    public TripPlan getTripPlan() {
-        return tripPlan;
-    }
-
-    public void setTripPlan(TripPlan tripPlan) {
-        this.tripPlan = tripPlan;
-    }
+//    public TripPlan getTripPlan() {
+//        return tripPlan;
+//    }
+//
+//    public void setTripPlan(TripPlan tripPlan) {
+//        this.tripPlan = tripPlan;
+//    }
 
     @Override
     public String toString() {
@@ -100,7 +109,7 @@ private TripPlan tripPlan;
                 ", night_activity='" + night_activity + '\'' +
                 ", restaurant='" + restaurant + '\'' +
                 ", category='" + category + '\'' +
-                ", tripPlan=" + tripPlan +
+//                ", tripPlan=" + tripPlan +
                 '}';
     }
 }
