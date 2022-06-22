@@ -47,12 +47,8 @@ public class TripService {
     public void updateDestination(String destination, String trip_id){
         tripRepo.updateDestination(destination,trip_id);
     }
-
-    public void updateStatus(UpdateTripStatusRequest request){
-        tripRepo.updateStatus(request.getStatus(), request.getTrip_id());
+    public void updateStatus(String status, String trip_id){
+        tripRepo.updateStatus(status, trip_id);
     }
-
-
-
 
 }
