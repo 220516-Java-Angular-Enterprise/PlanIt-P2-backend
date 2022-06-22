@@ -2,7 +2,7 @@ package com.revature.planit.dayplan;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.revature.planit.dayplan.dtos.requests.NewDayPlanRequest;
-import com.revature.planit.tripplan.TripPlan;
+
 
 import javax.persistence.*;
 
@@ -26,12 +26,12 @@ public class Dayplan {
 
     @Column(name="category",nullable = false)
     private String category;
-@OneToMany
-        (mappedBy = "dayplan",
-        fetch = FetchType.EAGER,
-        cascade = CascadeType.ALL)
-@JsonManagedReference
-private TripPlan tripPlan;
+//@OneToMany
+//        (mappedBy = "dayplan",
+//        fetch = FetchType.EAGER,
+//        cascade = CascadeType.ALL)
+//@JsonManagedReference
+//private TripPlan tripPlan;
     public Dayplan() {
     }
 
@@ -92,13 +92,13 @@ private TripPlan tripPlan;
         this.category = category;
     }
 
-    public TripPlan getTripPlan() {
-        return tripPlan;
-    }
-
-    public void setTripPlan(TripPlan tripPlan) {
-        this.tripPlan = tripPlan;
-    }
+//    public TripPlan getTripPlan() {
+//        return tripPlan;
+//    }
+//
+//    public void setTripPlan(TripPlan tripPlan) {
+//        this.tripPlan = tripPlan;
+//    }
 
     @Override
     public String toString() {
@@ -109,7 +109,7 @@ private TripPlan tripPlan;
                 ", night_activity='" + night_activity + '\'' +
                 ", restaurant='" + restaurant + '\'' +
                 ", category='" + category + '\'' +
-                ", tripPlan=" + tripPlan +
+//                ", tripPlan=" + tripPlan +
                 '}';
     }
 }

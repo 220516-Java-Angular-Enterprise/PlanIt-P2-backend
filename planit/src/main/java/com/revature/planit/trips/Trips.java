@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "trip")
@@ -23,9 +25,14 @@ public class Trips {
 
     @Column(name = "status")
     private String status;
-    @OneToMany
-    @JoinColumn(name="day_plan_ID", nullable = false)
-    private Dayplan dayplan;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tripPlan",
+            joinColumns = @JoinColumn(name = "dayplan_id"),
+            inverseJoinColumns = @JoinColumn(name = "trip_id")
+    )
+    private List<Dayplan> tripPlanList;
 
     @ManyToOne
     @JoinColumn(name="user_id",nullable=false)
@@ -34,28 +41,19 @@ public class Trips {
     public Trips() {
     }
 
-    public Trips(String id, String destination, String hotel, String status, User user) {
+    public Trips(String id, String destination, String hotel, String status, List<Dayplan> tripPlanList, User user) {
         this.id = id;
         this.destination = destination;
         this.hotel = hotel;
         this.status = status;
+        this.tripPlanList = tripPlanList;
         this.user = user;
-    }
-
-    public Trips(String id, String destination, String hotel, String status) {
-        this.id = id;
-        this.destination = destination;
-        this.hotel = hotel;
-        this.status = status;
     }
 
     public Trips(String hotel, String destination, String status) {
         this.destination = destination;
         this.hotel = hotel;
         this.status = status;
-
- 
-
     }
 
     public String getId() {
@@ -82,7 +80,6 @@ public class Trips {
         this.hotel = hotel;
     }
 
-
     public String getStatus() {
         return status;
     }
@@ -91,14 +88,33 @@ public class Trips {
         this.status = status;
     }
 
+    public List<Dayplan> getTripPlanList() {
+        return tripPlanList;
+    }
+
+    public void setTripPlanList(List<Dayplan> tripPlanList) {
+        this.tripPlanList = tripPlanList;
+    }
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
 
-   
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trips trips = (Trips) o;
+        return Objects.equals(id, trips.id) && Objects.equals(destination, trips.destination) && Objects.equals(hotel, trips.hotel) && Objects.equals(status, trips.status) && Objects.equals(tripPlanList, trips.tripPlanList) && Objects.equals(user, trips.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, destination, hotel, status, tripPlanList, user);
     }
 
     @Override
@@ -107,10 +123,9 @@ public class Trips {
                 "id='" + id + '\'' +
                 ", destination='" + destination + '\'' +
                 ", hotel='" + hotel + '\'' +
-
                 ", status='" + status + '\'' +
+                ", tripPlanList=" + tripPlanList +
                 ", user=" + user +
-
                 '}';
     }
 }
