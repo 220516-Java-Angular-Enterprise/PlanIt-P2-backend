@@ -35,9 +35,4 @@ public interface TripRepository extends CrudRepository<Trips, String> {
     @Query(value = "SELECT * FROM trip WHERE status ='favorite' AND user_id = ?", nativeQuery = true)
     List<Trips> getSavedTripsByUserID(String user_id);
 
-
-
-
-
-
 }
