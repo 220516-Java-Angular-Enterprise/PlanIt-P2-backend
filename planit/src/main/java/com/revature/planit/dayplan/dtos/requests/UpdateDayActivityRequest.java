@@ -9,9 +9,7 @@ public class UpdateDayActivityRequest {
         this.dayplan_id = dayplan_id;
     }
 
-    public UpdateDayActivityRequest(String day_activity) {
-        this.day_activity = day_activity;
-    }
+
 
     public String getDay_activity() {
         return day_activity;
