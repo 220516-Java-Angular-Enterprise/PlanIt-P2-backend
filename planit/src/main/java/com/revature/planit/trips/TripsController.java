@@ -8,10 +8,15 @@ import com.revature.planit.trips.dtos.responses.TripsByUser;
 import com.revature.planit.util.annotations.Inject;
 import com.revature.planit.util.custom_exceptions.InvalidRequestException;
 import com.revature.planit.util.custom_exceptions.ResourceConflictException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+
+
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -37,30 +42,6 @@ public class TripsController{
         return tripService.saveTrip(request).getId();
     }
 
-    /// UPDATE REQUESTS
-
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping("/updateDestination")
-    @PutMapping
-    public @ResponseBody Trips updateDestination(@RequestBody UpdateDestinationRequest request){
-        tripService.updateDestination(request.getDestination(),request.getTrip_id());
-        return updateDestination(request);
-    }
-
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping("/updateStatus")
-    @PutMapping
-    public @ResponseBody Trips updateStatus(@RequestBody UpdateTripStatusRequest request){
-        tripService.updateStatus(request);
-        return updateStatus(request);
-    }
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping("/updateHotel")
-    @PutMapping
-    public @ResponseBody Trips updateHotel(@RequestBody UpdateHotelRequest request){
-        tripService.updateHotel(request.getHotel(), request.getTrip_id());
-        return updateHotel(request);
-    }
 
     /// GET TRIP LISTS
     @CrossOrigin
@@ -74,13 +55,30 @@ public class TripsController{
     public @ResponseBody List<Trips> getTripByUser(TripsByUser response){
         return tripService.getAllTripsByUser(response.getUser_id());
     }
-
     @CrossOrigin
     @GetMapping(value = "/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Trips> getFavoriteByUser(TripsByUser response){
         return tripService.getSavedTripsByUserId(response.getUser_id());
     }
 
+    /// PUT REQUESTS
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping public @ResponseBody void updateDestination1(@RequestBody UpdateDestinationRequest request, @PathVariable String id){
+        tripService.updateDestination(request.getDestination(),id);
+    }
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping public @ResponseBody void updateStatus(@RequestBody UpdateTripStatusRequest request, @PathVariable String id){
+        tripService.updateStatus(request.getStatus(),id );
+    }
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping("/{id}")
+    @PutMapping public @ResponseBody void updateHotel(@RequestBody UpdateHotelRequest request, @PathVariable String id){
+        tripService.updateHotel(request.getHotel(), id);
+    }
+
+    //DELETE TRIP
 
     /// EXCEPTION HANDLES
     @ExceptionHandler

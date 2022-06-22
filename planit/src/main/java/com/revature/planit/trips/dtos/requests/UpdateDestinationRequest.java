@@ -9,6 +9,10 @@ public class UpdateDestinationRequest {
         this.trip_id = trip_id;
     }
 
+    public UpdateDestinationRequest(String destination) {
+        this.destination = destination;
+    }
+
     public String getDestination() {
         return destination;
     }
