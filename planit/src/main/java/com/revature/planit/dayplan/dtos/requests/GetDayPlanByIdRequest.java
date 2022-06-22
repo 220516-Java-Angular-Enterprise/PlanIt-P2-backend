@@ -1,4 +1,4 @@
-package com.revature.planit.dayplan.dtos;
+package com.revature.planit.dayplan.dtos.requests;
 
 public class GetDayPlanByIdRequest {
     private String id;
