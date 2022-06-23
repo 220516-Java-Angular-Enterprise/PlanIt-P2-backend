@@ -19,7 +19,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "fName", nullable = false)
+    @Column(name = "f_Name", nullable = false)
     private String fName;
 
     @OneToMany(

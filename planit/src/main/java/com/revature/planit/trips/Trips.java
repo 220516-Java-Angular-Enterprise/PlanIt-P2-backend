@@ -2,6 +2,7 @@
 
 
 package com.revature.planit.trips;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.revature.planit.dayplan.Dayplan;
 import com.revature.planit.user.User;
 import javax.persistence.*;
@@ -29,13 +30,14 @@ public class Trips {
     @ManyToMany
     @JoinTable(
             name = "tripPlan",
-            joinColumns = @JoinColumn(name = "dayplan_id"),
-            inverseJoinColumns = @JoinColumn(name = "trip_id")
+            joinColumns = @JoinColumn(name = "trip_id"),
+            inverseJoinColumns = @JoinColumn(name = "dayplan_id")
     )
     private List<Dayplan> tripPlanList;
 
     @ManyToOne
     @JoinColumn(name="user_id",nullable=false)
+    @JsonBackReference
     private User user;
 
     public Trips() {

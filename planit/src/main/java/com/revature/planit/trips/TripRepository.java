@@ -14,14 +14,14 @@ public interface TripRepository extends CrudRepository<Trips, String> {
 
     //this is to update the parts of their trip
     @Modifying
-    @Query(value = "UPDATE trip SET destination = ?1 WHERE trip_id= ?2", nativeQuery = true)
+    @Query(value = "UPDATE trip SET destination = ?1 WHERE id= ?2", nativeQuery = true)
     void updateDestination(String destination, String id);
     @Modifying
-    @Query(value = "UPDATE trip SET hotel = ?1 WHERE trip_id= ?2", nativeQuery = true)
+    @Query(value = "UPDATE trip SET hotel = ?1 WHERE id= ?2", nativeQuery = true)
     void updateHotel(String hotel, String id);
     //this would be so they can save this trip as one of their favorites
     @Modifying
-    @Query(value = "UPDATE trip SET status = ?1 WHERE trip_id= ?2", nativeQuery = true)
+    @Query(value = "UPDATE trip SET status = ?1 WHERE id= ?2", nativeQuery = true)
     void updateStatus(String status, String id);
 
     @Query(value = "SELECT * FROM trip WHERE user_id=?", nativeQuery = true)
