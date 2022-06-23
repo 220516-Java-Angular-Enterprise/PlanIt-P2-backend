@@ -5,16 +5,16 @@ import com.revature.planit.user.User;
 public class NewUserRequest {
     private String username;
     private String password;
-
     private String fName;
 
     public NewUserRequest() {
         super();
     }
 
-    public NewUserRequest(String username, String password) {
+    public NewUserRequest(String username, String password, String fName) {
         this.username = username;
         this.password = password;
+        this.fName=fName;
     }
 
     public String getUsername() {
@@ -36,6 +36,11 @@ public class NewUserRequest {
     public String getfName() {
         return fName;
     }
+
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
+
     public User extractUser() {
         return new User(username, password, fName);
     }

@@ -27,8 +27,9 @@ public class TripService {
     public Trips saveTrip(NewTripRequest tripRequest){
         Trips trips = tripRequest.extractTrip();
         trips.setId(UUID.randomUUID().toString());
-        tripRepo.saveTrip(trips.getId(),trips.getDestination(),trips.getHotel(),trips.getStatus(), String.valueOf(trips.getUser()));
-       return trips;
+        trips.setStatus("CREATED");
+        tripRepo.saveTrip(trips.getId(),trips.getDestination(),trips.getHotel(),trips.getStatus(),trips.getUser().getId());
+        return trips;
     }
 
     public List<Trips> getAllTripsByUser(String user_id){

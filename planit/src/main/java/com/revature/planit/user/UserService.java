@@ -37,7 +37,6 @@ public class UserService {
 
     public User register(NewUserRequest request) {
         User user = request.extractUser();
-
         if (isNotDuplicateUsername(user.getUsername())) {
             if (isValidUsername(user.getUsername())) {
                 if (isValidPassword(user.getPassword())) {

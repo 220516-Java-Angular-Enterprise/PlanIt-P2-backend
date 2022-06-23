@@ -42,7 +42,6 @@ public class TripsController{
         return tripService.saveTrip(request).getId();
     }
 
-
     /// GET TRIP LISTS
     @CrossOrigin
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,6 +49,7 @@ public class TripsController{
         return tripService.getAllTrips();
     }
 
+    // I don't think it needs the id mapping here -- please review
     @CrossOrigin
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Trips> getTripByUser(TripsByUser response){
@@ -62,18 +62,20 @@ public class TripsController{
     }
 
     /// PUT REQUESTS
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-//    @PutMapping public @ResponseBody void updateDestination1(@RequestBody UpdateDestinationRequest request, @PathVariable String id){
-//        tripService.updateDestination(request.getDestination(),id);
-//    }
+
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}/destination", method = RequestMethod.PUT)
+    @PutMapping public @ResponseBody void updateDestination(@RequestBody UpdateDestinationRequest request, @PathVariable String id){
+        tripService.updateDestination(request.getDestination(),id);
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/{id}/status", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateStatus(@RequestBody UpdateTripStatusRequest request, @PathVariable String id){
         tripService.updateStatus(request.getStatus(),id );
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}/hotel", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateHotel(@RequestBody UpdateHotelRequest request, @PathVariable String id){
         tripService.updateHotel(request.getHotel(), id);
     }
