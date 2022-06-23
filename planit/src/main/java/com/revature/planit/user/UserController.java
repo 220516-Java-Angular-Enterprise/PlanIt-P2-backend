@@ -36,7 +36,6 @@ public class UserController {
     @PostMapping(consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String register(@RequestBody NewUserRequest request){
         return userService.register(request).getId();
-
     }
 
     @ExceptionHandler
