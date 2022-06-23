@@ -1,6 +1,5 @@
 package com.revature.planit.dayplan;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.revature.planit.dayplan.dtos.requests.NewDayPlanRequest;
 
 

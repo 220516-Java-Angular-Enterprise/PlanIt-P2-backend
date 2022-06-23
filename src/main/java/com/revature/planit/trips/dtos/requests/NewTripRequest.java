@@ -1,7 +1,6 @@
 package com.revature.planit.trips.dtos.requests;
 
 import com.revature.planit.trips.Trips;
-import com.revature.planit.user.User;
 
 public class NewTripRequest {
     private String hotel;

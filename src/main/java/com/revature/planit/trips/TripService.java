@@ -1,7 +1,6 @@
 package com.revature.planit.trips;
 
 import com.revature.planit.trips.dtos.requests.NewTripRequest;
-import com.revature.planit.trips.dtos.requests.UpdateTripStatusRequest;
 import com.revature.planit.util.annotations.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
