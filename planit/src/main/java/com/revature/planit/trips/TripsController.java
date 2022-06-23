@@ -62,11 +62,13 @@ public class TripsController{
     }
 
     /// PUT REQUESTS
+
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/{id}/destination", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateDestination(@RequestBody UpdateDestinationRequest request, @PathVariable String id){
         tripService.updateDestination(request.getDestination(),id);
     }
+
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/{id}/status", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateStatus(@RequestBody UpdateTripStatusRequest request, @PathVariable String id){
