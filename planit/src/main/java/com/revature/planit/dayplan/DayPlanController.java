@@ -53,37 +53,37 @@ public class DayPlanController {
     }
 
     //Update Requests
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @PutMapping
+ @ResponseStatus(HttpStatus.ACCEPTED)
+  @RequestMapping(value = "/{id}/day_activity", method = RequestMethod.PUT)
+@PutMapping
     public @ResponseBody void updateDayActivity(@RequestBody UpdateDayActivityRequest request, @PathVariable String id) {
-        dayPlanService.updateDayActivity(request.getDay_activity(), id);
+      dayPlanService.updateDayActivity(request.getDay_activity(), id);
 
-    }
+   }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+ @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/{id}/night_activity", method = RequestMethod.PUT)
     @PutMapping
     public @ResponseBody void updateNightActivity(@RequestBody UpdateNightActivityRequest request, @PathVariable String id) {
-        dayPlanService.updateNightActivity(request.getNight_activity(), id);
+      dayPlanService.updateNightActivity(request.getNight_activity(), id);
+
+  }
+
+   @ResponseStatus(HttpStatus.ACCEPTED)
+  @RequestMapping(value = "/{id}/restaurant", method = RequestMethod.PUT)
+   @PutMapping
+  public @ResponseBody void updateRestaurant(@RequestBody UpdateRestaurantRequest request ,@PathVariable String id) {
+     dayPlanService.updateRestaurant(request.getRestaurant(), id);
 
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @PutMapping
-    public @ResponseBody void updateRestaurant(@RequestBody UpdateRestaurantRequest request ,@PathVariable String id) {
-        dayPlanService.updateRestaurant(request.getRestaurant(), id);
+  @ResponseStatus(HttpStatus.ACCEPTED)
+   @RequestMapping(value = "/{id}/category ", method = RequestMethod.PUT)
+  @PutMapping
+ public @ResponseBody void updateCategory(@RequestBody UpdateCategoryRequest request, @PathVariable String id) {
+      dayPlanService.updateCategory(request.getCategory(), id);
 
-    }
-
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @PutMapping
-    public @ResponseBody void updateCategory(@RequestBody UpdateCategoryRequest request, @PathVariable String id) {
-        dayPlanService.updateCategory(request.getCategory(), id);
-
-    }
+   }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteDayPlan(@PathVariable("id") String id) {
