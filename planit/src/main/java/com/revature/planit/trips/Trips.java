@@ -2,6 +2,7 @@
 
 
 package com.revature.planit.trips;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.revature.planit.dayplan.Dayplan;
 import com.revature.planit.user.User;
 import javax.persistence.*;
@@ -36,6 +37,7 @@ public class Trips {
 
     @ManyToOne
     @JoinColumn(name="user_id",nullable=false)
+    @JsonBackReference
     private User user;
 
     public Trips() {

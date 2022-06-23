@@ -42,7 +42,6 @@ public class TripsController{
         return tripService.saveTrip(request).getId();
     }
 
-
     /// GET TRIP LISTS
     @CrossOrigin
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,6 +49,7 @@ public class TripsController{
         return tripService.getAllTrips();
     }
 
+    // I don't think it needs the id mapping here -- please review
     @CrossOrigin
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Trips> getTripByUser(TripsByUser response){
