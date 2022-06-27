@@ -4,6 +4,7 @@
 package com.revature.planit.trips;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.revature.planit.dayplan.Dayplan;
+import com.revature.planit.trips.dtos.requests.NewTripRequest;
 import com.revature.planit.user.User;
 import javax.persistence.*;
 import javax.persistence.Column;
@@ -56,6 +57,13 @@ public class Trips {
         this.destination = destination;
         this.hotel = hotel;
         this.status = status;
+    }
+
+    public Trips(String id, NewTripRequest tripRequest) {
+        this.id=id;
+        this.hotel=tripRequest.getHotel();
+        this.destination=tripRequest.getDestination();
+
     }
 
     public String getId() {
