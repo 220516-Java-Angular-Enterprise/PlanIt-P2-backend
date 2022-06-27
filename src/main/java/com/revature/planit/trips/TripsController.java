@@ -56,7 +56,7 @@ public class TripsController{
         return tripService.getAllTripsByUser(response.getUser_id());
     }
     @CrossOrigin
-    @GetMapping(value = "/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "saved/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Trips> getFavoriteByUser(TripsByUser response){
         return tripService.getSavedTripsByUserId(response.getUser_id());
     }

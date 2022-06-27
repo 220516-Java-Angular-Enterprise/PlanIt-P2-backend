@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 public interface DayplanRepo extends CrudRepository<Dayplan,String> {
 Dayplan findDayPlanById(String id);
 @Modifying
-@Query(value = "INSERT INTO dayplan(id,day_of_trip,day_activity,night_activity,restaurant,category)VALUES(?1,?2,?3,?4,?5,?6)",nativeQuery = true)
-void saveDayPlan(String id,int day_of_trip,String day_activity, String night_activity,String restaurant, String category);
+@Query(value = "INSERT INTO dayplan (id,day_of_trip,day_activity,night_activity,restaurant,category) VALUES(?1,?2,?3,?4,?5,?6)",nativeQuery = true)
+void saveDayPlan(String id, int day_of_trip, String day_activity, String night_activity, String restaurant, String category);
 
     void deleteDayPlanById(String id);
 //this updates the activities,restaurants and categories

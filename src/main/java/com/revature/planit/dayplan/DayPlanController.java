@@ -42,8 +42,8 @@ public class DayPlanController {
 
     @CrossOrigin
     @PostMapping(consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody String createNewDayPlan(NewDayPlanRequest request) {
-        return dayPlanService.createdNewDayPlan(request);
+    public @ResponseBody String createNewDayPlan(@RequestBody NewDayPlanRequest request) {
+        return dayPlanService.createdNewDayPlan(request).getId();
     }
 
     @PutMapping("/update")
