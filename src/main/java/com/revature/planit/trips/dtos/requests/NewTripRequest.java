@@ -15,6 +15,10 @@ public class NewTripRequest {
         this.user_id = user_id;
     }
 
+    public NewTripRequest() {
+        super();
+    }
+
     public String getHotel() {
         return hotel;
     }
