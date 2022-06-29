@@ -63,17 +63,20 @@ public class TripsController{
 
     /// PUT REQUESTS
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/{id}/destination", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateDestination(@RequestBody UpdateDestinationRequest request, @PathVariable String id){
         tripService.updateDestination(request.getDestination(),id);
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/{id}/status", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateStatus(@RequestBody UpdateTripStatusRequest request, @PathVariable String id){
         tripService.updateStatus(request.getStatus(),id );
     }
+    @CrossOrigin
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/{id}/hotel", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateHotel(@RequestBody UpdateHotelRequest request, @PathVariable String id){

@@ -46,6 +46,7 @@ public class DayPlanController {
         return dayPlanService.createdNewDayPlan(request).getId();
     }
 
+    @CrossOrigin
     @PutMapping("/update")
     public ResponseEntity<Dayplan> updateDayPlan(@RequestBody Dayplan dayplan) {
         Dayplan updateDayPlan = dayPlanService.updateDayPlan(dayplan);

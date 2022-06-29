@@ -2,6 +2,7 @@ package com.revature.planit.user;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.revature.planit.trips.Trips;
+import com.revature.planit.user.dtos.NewUserRequest;
 
 import javax.persistence.*;
 import java.util.List;
@@ -45,6 +46,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.fName = fName;
+    }
+
+    public User(NewUserRequest userRequest, String id) {
+
     }
 
     public String getId() {

@@ -55,5 +55,4 @@ public class TripService {
     public void updateStatus(String status, String trip_id){
         tripRepo.updateStatus(status, trip_id);
     }
-
 }
