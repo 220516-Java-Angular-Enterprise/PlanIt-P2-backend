@@ -67,7 +67,7 @@ public class TripsController{
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(value = "/{id}/destination", method = RequestMethod.PUT)
     @PutMapping public @ResponseBody void updateDestination(@RequestBody UpdateDestinationRequest request, @PathVariable String id){
-        tripService.updateDestination(request.getDestination(),id);
+        tripService.updateDestination(request.getLatitude(),request.getLongitude(),id);
     }
 
     @CrossOrigin

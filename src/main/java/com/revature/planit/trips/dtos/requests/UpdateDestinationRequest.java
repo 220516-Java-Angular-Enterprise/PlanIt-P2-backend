@@ -1,24 +1,30 @@
 package com.revature.planit.trips.dtos.requests;
 
 public class UpdateDestinationRequest {
-    private String destination;
+    private String latitude;
+    private String longitude;
     private String trip_id;
 
-    public UpdateDestinationRequest(String destination, String trip_id) {
-        this.destination = destination;
+    public UpdateDestinationRequest(String latitude, String longitude, String trip_id) {
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.trip_id = trip_id;
     }
 
-    public UpdateDestinationRequest(String destination) {
-        this.destination = destination;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public String getDestination() {
-        return destination;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getTrip_id() {
@@ -32,7 +38,8 @@ public class UpdateDestinationRequest {
     @Override
     public String toString() {
         return "UpdateDestinationRequest{" +
-                "destination='" + destination + '\'' +
+                "latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
                 ", trip_id='" + trip_id + '\'' +
                 '}';
     }

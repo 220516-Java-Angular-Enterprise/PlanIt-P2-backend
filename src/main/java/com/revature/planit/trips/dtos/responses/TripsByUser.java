@@ -2,14 +2,16 @@ package com.revature.planit.trips.dtos.responses;
 
 public class TripsByUser {
     private String user_id;
-    private String destination;
-    private String hotel;
+    private String latitude;
+    private String longitude;
+    private String hotel_id;
     private String status;
 
-    public TripsByUser(String user_id, String destination, String hotel, String status) {
+    public TripsByUser(String user_id, String latitude, String longitude, String hotel_id, String status) {
         this.user_id = user_id;
-        this.destination = destination;
-        this.hotel = hotel;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.hotel_id = hotel_id;
         this.status = status;
     }
 
@@ -21,20 +23,28 @@ public class TripsByUser {
         this.user_id = user_id;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
-    public String getHotel() {
-        return hotel;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setHotel(String hotel) {
-        this.hotel = hotel;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getHotel_id() {
+        return hotel_id;
+    }
+
+    public void setHotel_id(String hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     public String getStatus() {
@@ -49,8 +59,9 @@ public class TripsByUser {
     public String toString() {
         return "TripsByUser{" +
                 "user_id='" + user_id + '\'' +
-                ", destination='" + destination + '\'' +
-                ", hotel='" + hotel + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", hotel_id='" + hotel_id + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }

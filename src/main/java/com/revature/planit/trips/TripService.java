@@ -1,5 +1,7 @@
 package com.revature.planit.trips;
 
+import com.revature.planit.dayplan.DayPlanService;
+import com.revature.planit.dayplan.DayplanRepo;
 import com.revature.planit.trips.dtos.requests.NewTripRequest;
 import com.revature.planit.user.UserRepository;
 import com.revature.planit.util.annotations.Inject;
@@ -16,13 +18,15 @@ public class TripService {
     @Inject
     private final TripRepository tripRepo;
     private final UserRepository userRepo;
+    private final DayplanRepo dayplanRepo;
 
 
     @Inject
     @Autowired
-    public TripService(TripRepository tripRepo, UserRepository userRepo) {
+    public TripService(TripRepository tripRepo, UserRepository userRepo, DayplanRepo dayplanRepo) {
         this.tripRepo = tripRepo;
         this.userRepo = userRepo;
+        this.dayplanRepo =dayplanRepo;
     }
 
     //need to add more information in order to save new trip
@@ -31,8 +35,10 @@ public class TripService {
         Trips trips = new Trips(UUID.randomUUID().toString(),tripRequest);
         trips.setId(UUID.randomUUID().toString());
         trips.setUser(userRepo.findUserById(tripRequest.getUser_id()));
+        trips.setDayplan(dayplanRepo.findDayPlanById(tripRequest.getUser_id()));
         trips.setStatus("CREATED");
-        tripRepo.saveTrip(trips.getId(),trips.getDestination(),trips.getHotel(),trips.getStatus(),trips.getUser().getId());
+        tripRepo.saveTrip(trips.getId(),trips.getLatitude(),trips.getLongitude(),trips.getHotel(),
+                trips.getHotel_ID(),trips.getStatus(),trips.getUser().getId(),trips.getDayplan().getId());
         return trips;
     }
 
@@ -49,8 +55,8 @@ public class TripService {
     public void updateHotel(String hotel, String trip_id){
         tripRepo.updateHotel(hotel,trip_id);
     }
-    public void updateDestination(String destination, String trip_id){
-        tripRepo.updateDestination(destination,trip_id);
+    public void updateDestination(String latitude, String longitude, String trip_id){
+        tripRepo.updateDestination(latitude,longitude,trip_id);
     }
     public void updateStatus(String status, String trip_id){
         tripRepo.updateStatus(status, trip_id);
