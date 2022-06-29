@@ -1,4 +1,4 @@
-package com.revature.planit.login.dtos.responses;
+package com.revature.planit.auth.dtos.responses;
 
 import com.revature.planit.user.User;
 

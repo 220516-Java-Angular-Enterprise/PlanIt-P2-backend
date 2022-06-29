@@ -1,4 +1,4 @@
-package com.revature.planit.login;
+package com.revature.planit.auth;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;

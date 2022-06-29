@@ -1,7 +1,7 @@
-package com.revature.planit.login;
+package com.revature.planit.auth;
 
-import com.revature.planit.login.dtos.requests.LoginRequest;
-import com.revature.planit.login.dtos.responses.Principal;
+import com.revature.planit.auth.dtos.requests.LoginRequest;
+import com.revature.planit.auth.dtos.responses.Principal;
 import com.revature.planit.user.UserService;
 import com.revature.planit.util.annotations.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/login")
-public class LoginController {
+@RequestMapping("/auth")
+public class AuthController {
     @Inject
     private final UserService userService;
     private final TokenService tokenService;
 
     @Inject
     @Autowired
-    public LoginController(UserService userService, TokenService tokenService) {
+    public AuthController(UserService userService, TokenService tokenService) {
         this.userService = userService;
         this.tokenService = tokenService;
     }
