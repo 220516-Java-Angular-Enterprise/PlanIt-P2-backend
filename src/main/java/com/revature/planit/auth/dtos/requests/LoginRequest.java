@@ -1,4 +1,4 @@
-package com.revature.planit.login.dtos.requests;
+package com.revature.planit.auth.dtos.requests;
 
 public class LoginRequest {
     private String username;

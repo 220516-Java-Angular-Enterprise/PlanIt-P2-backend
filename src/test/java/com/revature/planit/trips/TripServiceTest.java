@@ -1,10 +1,8 @@
 package com.revature.planit.trips;
 
-import com.revature.planit.login.dtos.requests.LoginRequest;
 import com.revature.planit.trips.dtos.requests.NewTripRequest;
 import com.revature.planit.user.User;
 import com.revature.planit.user.UserRepository;
-import com.revature.planit.util.custom_exceptions.InvalidRequestException;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
