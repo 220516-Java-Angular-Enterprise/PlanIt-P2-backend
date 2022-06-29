@@ -27,11 +27,12 @@ public class UserController {
         this.userService = userService;
     }
 
+    @CrossOrigin
     @GetMapping
     public @ResponseBody List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-
+    @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody String register(@RequestBody NewUserRequest request){

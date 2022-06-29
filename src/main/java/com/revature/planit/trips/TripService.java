@@ -1,6 +1,7 @@
 package com.revature.planit.trips;
 
 import com.revature.planit.trips.dtos.requests.NewTripRequest;
+import com.revature.planit.user.UserRepository;
 import com.revature.planit.util.annotations.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,18 +15,22 @@ import java.util.UUID;
 public class TripService {
     @Inject
     private final TripRepository tripRepo;
+    private final UserRepository userRepo;
+
 
     @Inject
     @Autowired
-    public TripService(TripRepository tripRepo) {
+    public TripService(TripRepository tripRepo, UserRepository userRepo) {
         this.tripRepo = tripRepo;
+        this.userRepo = userRepo;
     }
 
     //need to add more information in order to save new trip
     //can add more when model is done
     public Trips saveTrip(NewTripRequest tripRequest){
-        Trips trips = tripRequest.extractTrip();
+        Trips trips = new Trips(UUID.randomUUID().toString(),tripRequest);
         trips.setId(UUID.randomUUID().toString());
+        trips.setUser(userRepo.findUserById(tripRequest.getUser_id()));
         trips.setStatus("CREATED");
         tripRepo.saveTrip(trips.getId(),trips.getDestination(),trips.getHotel(),trips.getStatus(),trips.getUser().getId());
         return trips;
@@ -50,5 +55,4 @@ public class TripService {
     public void updateStatus(String status, String trip_id){
         tripRepo.updateStatus(status, trip_id);
     }
-
 }

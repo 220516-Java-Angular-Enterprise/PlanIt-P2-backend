@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TripRepository extends CrudRepository<Trips, String> {
     @Modifying
-    @Query(value = "INSERT INTO trip (id, destination, hotel, status, user_id),  VALUES(?,?,?,?,?,?)", nativeQuery = true)
+    @Query(value = "INSERT INTO trip (id, destination, hotel, status, user_id) VALUES(?1,?2,?3,?4,?5)", nativeQuery = true)
     void saveTrip(String id, String destination, String hotel, String status , String user_id);
 
     //this is to update the parts of their trip

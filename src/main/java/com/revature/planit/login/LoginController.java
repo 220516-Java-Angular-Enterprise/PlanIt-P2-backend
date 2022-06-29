@@ -24,6 +24,7 @@ public class LoginController {
         this.tokenService = tokenService;
     }
 
+    @CrossOrigin
     @PostMapping(consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Principal login(@RequestBody LoginRequest request, HttpServletResponse resp) {
         Principal principal = new Principal(userService.login(request));

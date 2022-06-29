@@ -5,11 +5,13 @@ import com.revature.planit.util.annotations.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class DayPlanService {
     @Inject
     private final DayplanRepo dayplanRepo;
@@ -25,10 +27,11 @@ public class DayPlanService {
     public Optional<Dayplan>getDayPlanById(String id){
         return dayplanRepo.findById(id);
     }
-    public String createdNewDayPlan(NewDayPlanRequest request){
+    public Dayplan createdNewDayPlan(NewDayPlanRequest request){
         Dayplan dayplan = new Dayplan(UUID.randomUUID().toString(),request);
-        dayplanRepo.save(dayplan);
-        return dayplan.getId();
+        dayplan.setId(UUID.randomUUID().toString());
+        dayplanRepo.saveDayPlan(dayplan.getId(),dayplan.getDay_of_trip(),dayplan.getDay_activity(),dayplan.getNight_activity(),dayplan.getRestaurant(),dayplan.getCategory());
+        return dayplan;
     }
 
     public Dayplan updateDayPlan(Dayplan dayplan) {
