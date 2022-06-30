@@ -34,11 +34,14 @@ public class TripService {
     public Trips saveTrip(NewTripRequest tripRequest){
         Trips trips = new Trips(UUID.randomUUID().toString(),tripRequest);
         trips.setId(UUID.randomUUID().toString());
-        trips.setUser(userRepo.findUserById(tripRequest.getUser_id()));
-        trips.setDayplan(dayplanRepo.findDayPlanById(tripRequest.getUser_id()));
+        //trips.setUser(userRepo.findUserById(tripRequest.getUser_id()));
+        //trips.setDayplan(dayplanRepo.findDayPlanById(tripRequest.getDayPlan_id()));
         trips.setStatus("CREATED");
-        tripRepo.saveTrip(trips.getId(),trips.getLatitude(),trips.getLongitude(),trips.getHotel(),
-                trips.getHotel_ID(),trips.getStatus(),trips.getUser().getId(),trips.getDayplan().getId());
+        tripRepo.saveTrip(trips.getId(),tripRequest.getLatitude(),
+                tripRequest.getLongitude(),tripRequest.getHotel(),
+                tripRequest.getHotel_id(),trips.getStatus(),
+                tripRequest.getUser_id(),
+                tripRequest.getDayPlan_id());
         return trips;
     }
 

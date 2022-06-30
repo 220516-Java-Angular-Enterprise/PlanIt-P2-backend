@@ -4,15 +4,17 @@ import com.revature.planit.trips.Trips;
 
 public class NewTripRequest {
     private String hotel;
+    private String hotel_id;
     private String latitude;
     private String longitude;
     private String status;
     private String user_id;
     private String dayPlan_id;
 
-    public NewTripRequest(String hotel, String latitude, String longitude,
+    public NewTripRequest(String hotel, String hotel_id, String latitude, String longitude,
                           String status, String user_id, String dayPlan_id) {
         this.hotel = hotel;
+        this.hotel_id=hotel_id;
         this.latitude = latitude;
         this.longitude = longitude;
         this.status = status;
@@ -30,6 +32,14 @@ public class NewTripRequest {
 
     public void setHotel(String hotel) {
         this.hotel = hotel;
+    }
+
+    public String getHotel_id() {
+        return hotel_id;
+    }
+
+    public void setHotel_id(String hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     public String getLatitude() {
@@ -76,14 +86,5 @@ public class NewTripRequest {
         return new Trips(hotel,latitude,longitude,status);
     }
 
-    @Override
-    public String toString() {
-        return "NewTripRequest{" +
-                "hotel='" + hotel + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", status='" + status + '\'' +
-                ", user_id='" + user_id + '\'' +
-                '}';
-    }
+
 }

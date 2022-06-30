@@ -30,10 +30,10 @@ public class DayPlanService {
     public Dayplan createdNewDayPlan(NewDayPlanRequest request){
         Dayplan dayplan = new Dayplan(UUID.randomUUID().toString(),request);
         dayplan.setId(UUID.randomUUID().toString());
-        dayplanRepo.saveDayPlan(dayplan.getId(),dayplan.getDay_of_trip(),
-                dayplan.getDay_activity(),dayplan.getDay_activity_id(),
-                dayplan.getNight_activity(), dayplan.getNight_activity_id(),
-                dayplan.getRestaurant(), dayplan.getRestaurant_id(), dayplan.getCategory());
+        dayplanRepo.saveDayPlan(dayplan.getId(),request.getDay_of_trip(),
+                request.getDay_activity(),request.getDay_activity_id(),
+                request.getNight_activity(), request.getNight_activity_id(),
+                request.getRestaurant(), request.getRestaurant_id(), request.getCategory());
         return dayplan;
     }
 
