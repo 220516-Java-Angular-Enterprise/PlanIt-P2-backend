@@ -4,15 +4,22 @@ import com.revature.planit.trips.Trips;
 
 public class NewTripRequest {
     private String hotel;
-    private String destination;
+    private String hotel_id;
+    private String latitude;
+    private String longitude;
     private String status;
     private String user_id;
+    private String dayPlan_id;
 
-    public NewTripRequest(String hotel, String destination, String status, String user_id) {
+    public NewTripRequest(String hotel, String hotel_id, String latitude, String longitude,
+                          String status, String user_id, String dayPlan_id) {
         this.hotel = hotel;
-        this.destination = destination;
+        this.hotel_id=hotel_id;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.status = status;
         this.user_id = user_id;
+        this.dayPlan_id = dayPlan_id;
     }
 
     public NewTripRequest() {
@@ -27,12 +34,28 @@ public class NewTripRequest {
         this.hotel = hotel;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getHotel_id() {
+        return hotel_id;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setHotel_id(String hotel_id) {
+        this.hotel_id = hotel_id;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getStatus() {
@@ -51,16 +74,17 @@ public class NewTripRequest {
         this.user_id = user_id;
     }
 
+    public String getDayPlan_id() {
+        return dayPlan_id;
+    }
+
+    public void setDayPlan_id(String dayPlan_id) {
+        this.dayPlan_id = dayPlan_id;
+    }
+
     public Trips extractTrip() {
-        return new Trips(hotel,destination,status);
+        return new Trips(hotel,latitude,longitude,status);
     }
-    @Override
-    public String toString() {
-        return "NewTripRequest{" +
-                "hotel='" + hotel + '\'' +
-                ", destination='" + destination + '\'' +
-                ", status='" + status + '\'' +
-                ", user_id='" + user_id + '\'' +
-                '}';
-    }
+
+
 }

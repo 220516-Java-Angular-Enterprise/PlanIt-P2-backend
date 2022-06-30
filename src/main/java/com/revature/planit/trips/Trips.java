@@ -20,11 +20,16 @@ import java.util.Objects;
 public class Trips {
     @Id
     private String id;
-    @Column(name="destination",nullable = false)
-    private String destination;
+
+    @Column(name="latitude",nullable = false)
+    private String latitude;
+
+    @Column(name="longitude",nullable = false)
+    private String longitude;
     @Column(name="hotel",nullable = false)
     private String hotel;
-
+    @Column(name="hotel_ID",nullable = false)
+    private String hotel_ID;
     @Column(name = "status")
     private String status;
 
@@ -34,8 +39,11 @@ public class Trips {
             joinColumns = @JoinColumn(name = "trip_id"),
             inverseJoinColumns = @JoinColumn(name = "dayplan_id")
     )
-    private List<Dayplan> tripPlanList;
-
+    private List <Dayplan> tripPlanList;
+    @ManyToOne
+    @JoinColumn(name="dayplan_id",nullable=false)
+    @JsonBackReference
+    private  Dayplan dayplan;
     @ManyToOne
     @JoinColumn(name="user_id",nullable=false)
     @JsonBackReference
@@ -44,17 +52,18 @@ public class Trips {
     public Trips() {
     }
 
-    public Trips(String id, String destination, String hotel, String status, List<Dayplan> tripPlanList, User user) {
+    public Trips(String id, String hotel, String status, Dayplan dayplan, User user) {
         this.id = id;
-        this.destination = destination;
         this.hotel = hotel;
         this.status = status;
-        this.tripPlanList = tripPlanList;
+        this.dayplan = dayplan;
         this.user = user;
     }
 
-    public Trips(String hotel, String destination, String status) {
-        this.destination = destination;
+
+
+    public Trips(String hotel, String latitude, String status) {
+        this.latitude = latitude;
         this.hotel = hotel;
         this.status = status;
     }
@@ -62,8 +71,37 @@ public class Trips {
     public Trips(String id, NewTripRequest tripRequest) {
         this.id=id;
         this.hotel=tripRequest.getHotel();
-        this.destination=tripRequest.getDestination();
+        this.latitude=tripRequest.getLatitude();
+        this.longitude= tripRequest.getLongitude();
 
+    }
+
+    public Trips(String id, String latitude, String longitude, String hotel, String hotel_ID, String status,
+                 List<Dayplan> tripPlanList, Dayplan dayplan, User user) {
+        this.id = id;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.hotel = hotel;
+        this.hotel_ID = hotel_ID;
+        this.status = status;
+        this.tripPlanList = tripPlanList;
+        this.dayplan = dayplan;
+        this.user = user;
+    }
+
+    public Trips(String hotel, String latitude, String longitude, String status) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.hotel = hotel;
+        this.status = status;
+    }
+
+    public List<Dayplan> getTripPlanList() {
+        return tripPlanList;
+    }
+
+    public void setTripPlanList(List<Dayplan> tripPlanList) {
+        this.tripPlanList = tripPlanList;
     }
 
     public String getId() {
@@ -74,12 +112,20 @@ public class Trips {
         this.id = id;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getHotel() {
@@ -90,6 +136,14 @@ public class Trips {
         this.hotel = hotel;
     }
 
+    public String getHotel_ID() {
+        return hotel_ID;
+    }
+
+    public void setHotel_ID(String hotel_ID) {
+        this.hotel_ID = hotel_ID;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -98,12 +152,12 @@ public class Trips {
         this.status = status;
     }
 
-    public List<Dayplan> getTripPlanList() {
-        return tripPlanList;
+    public Dayplan getDayplan() {
+        return dayplan;
     }
 
-    public void setTripPlanList(List<Dayplan> tripPlanList) {
-        this.tripPlanList = tripPlanList;
+    public void setDayplan(Dayplan dayplan) {
+        this.dayplan = dayplan;
     }
 
     public User getUser() {
@@ -119,22 +173,24 @@ public class Trips {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Trips trips = (Trips) o;
-        return Objects.equals(id, trips.id) && Objects.equals(destination, trips.destination) && Objects.equals(hotel, trips.hotel) && Objects.equals(status, trips.status) && Objects.equals(tripPlanList, trips.tripPlanList) && Objects.equals(user, trips.user);
+        return Objects.equals(id, trips.id) && Objects.equals(latitude, trips.latitude) && Objects.equals(longitude, trips.longitude) && Objects.equals(hotel, trips.hotel) && Objects.equals(hotel_ID, trips.hotel_ID) && Objects.equals(status, trips.status) && Objects.equals(dayplan, trips.dayplan) && Objects.equals(user, trips.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, destination, hotel, status, tripPlanList, user);
+        return Objects.hash(id, latitude, longitude, hotel, hotel_ID, status, dayplan, user);
     }
 
     @Override
     public String toString() {
         return "Trips{" +
                 "id='" + id + '\'' +
-                ", destination='" + destination + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
                 ", hotel='" + hotel + '\'' +
+                ", hotel_ID='" + hotel_ID + '\'' +
                 ", status='" + status + '\'' +
-                ", tripPlanList=" + tripPlanList +
+                ", tripPlanList=" + dayplan +
                 ", user=" + user +
                 '}';
     }
