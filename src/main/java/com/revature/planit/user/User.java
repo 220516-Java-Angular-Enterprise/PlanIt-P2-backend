@@ -20,8 +20,9 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "f_Name", nullable = false)
-    private String fName;
+
+    @Column (name = "email", nullable = false)
+    private String email;
 
     @OneToMany(
             mappedBy = "user",
@@ -35,22 +36,44 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String fName) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.fName = fName;
     }
 
-    public User(String id, String username, String password, String fName) {
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public User(String id, String username, String password, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.fName = fName;
+        this.email = email;
     }
 
     public User(NewUserRequest userRequest, String id) {
 
     }
+    public String getEmail() {
+        return email;
+    }
+
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Trips> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trips> trips) {
+        this.trips = trips;
+    }
+
 
     public String getId() {
         return id;
@@ -76,14 +99,6 @@ public class User {
         this.password = password;
     }
 
-    public String getfName() {
-        return fName;
-    }
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
-
-
 
     @Override
     public String toString() {
@@ -91,7 +106,7 @@ public class User {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", fName='" + fName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

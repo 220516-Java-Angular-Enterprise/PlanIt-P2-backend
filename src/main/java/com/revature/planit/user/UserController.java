@@ -9,10 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Column;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -32,6 +34,11 @@ public class UserController {
     public @ResponseBody List<User> getAllUsers(){
         return userService.getAllUsers();
     }
+
+    @CrossOrigin
+    @GetMapping(value = "/get-by-email/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Optional<User> getUserByEmail(@PathVariable String email) { return userService.getUserByEmail(email); }
+
     @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)

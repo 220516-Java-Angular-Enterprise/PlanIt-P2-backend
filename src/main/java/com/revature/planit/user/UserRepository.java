@@ -5,19 +5,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
-
+import java.util.Optional;
 
 
 public interface UserRepository extends CrudRepository<User, String> {
     @Modifying
-    @Query(value = "INSERT INTO users (id, username, password, f_Name) VALUES (?1, ?2, crypt(?3, gen_salt('bf')), ?4)", nativeQuery = true)
-    void saveUser(String id, String username, String password, String fName);
+    @Query(value = "INSERT INTO users (id, username, password, email) VALUES (?1, ?2, crypt(?3, gen_salt('bf')), ?4)", nativeQuery = true)
+    void saveUser(String id, String username, String password, String email);
 
     @Query(value = "SELECT username FROM users", nativeQuery = true)
     List<String> getAllUsername();
 
     @Query(value = "SELECT * FROM users WHERE username = ?1 AND password = crypt(?2, password)", nativeQuery = true)
     User getUserByUsernameAndPassword(String username, String password);
-
+    @Query(value = "SELECT * FROM users WHERE email = ?1", nativeQuery = true)
+    Optional<User> getUserByEmail(String email);
     User findUserById(String id);
 }

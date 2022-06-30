@@ -24,7 +24,7 @@ public class UserServiceTest extends TestCase {
     public void testLogin() {
         userRepo = mock(UserRepository.class);
         userService = new UserService(userRepo);
-        user = new User("id", "halcoro9","P@ssw0rd", "name");
+        user = new User("id", "halcoro9","P@ssw0rd", "email");
         loginRequest= new LoginRequest(user.getUsername(),user.getPassword());
         Assert.assertThrows(AuthenticationException.class,()->userService.login(loginRequest));
     }
@@ -33,7 +33,7 @@ public class UserServiceTest extends TestCase {
         userRepo = mock(UserRepository.class);
         userService = new UserService(userRepo);
         user = new User("id", "","P@ssw0rd", "name");
-        newUserRequest = new NewUserRequest(user.getUsername(),user.getPassword(),user.getfName());
+        newUserRequest = new NewUserRequest(user.getUsername(),user.getPassword(),user.getEmail());
 
         Assert.assertThrows(InvalidRequestException.class,()->userService.register(newUserRequest));
     }
@@ -42,7 +42,7 @@ public class UserServiceTest extends TestCase {
         userRepo = mock(UserRepository.class);
         userService = new UserService(userRepo);
         user = new User("id", "halcoro1","", "name");
-        newUserRequest = new NewUserRequest(user.getUsername(),user.getPassword(),user.getfName());
+        newUserRequest = new NewUserRequest(user.getUsername(),user.getPassword(),user.getEmail());
 
         Assert.assertThrows(InvalidRequestException.class,()->userService.register(newUserRequest));
     }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -41,12 +42,18 @@ public class UserService {
             if (isValidUsername(user.getUsername())) {
                 if (isValidPassword(user.getPassword())) {
                     user.setId(UUID.randomUUID().toString());
-                    userRepo.saveUser(user.getId(), user.getUsername(), user.getPassword(), user.getfName());
+                    user.setUsername(request.getUsername());
+                    user.setPassword(request.getPassword());
+                    user.setEmail(request.getEmail());
+                    userRepo.saveUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail());
                 } else throw new InvalidRequestException("Invalid password. Minimum eight characters, at least one letter, one number and one special character.");
             } else throw new InvalidRequestException("Invalid username. Username needs to be 8-20 characters long.");
         } else throw new ResourceConflictException("Username is already taken :(");
 
         return user;
+    }
+    public Optional<User> getUserByEmail(String email) {
+        return userRepo.getUserByEmail(email);
     }
 
     public List<User> getAllUsers() {

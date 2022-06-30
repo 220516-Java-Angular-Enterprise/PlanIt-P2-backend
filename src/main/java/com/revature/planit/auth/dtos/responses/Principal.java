@@ -5,7 +5,7 @@ import com.revature.planit.user.User;
 public class Principal {
     private String id;
     private String username;
-    private String fName;
+    private String email;
 
     public Principal() {
         super();
@@ -14,13 +14,13 @@ public class Principal {
     public Principal(User user) {
         this.id = user.getId();
         this.username = user.getUsername();
-        this.fName = user.getfName();
+        this.email = user.getEmail();
     }
 
-    public Principal(String id, String username, String fName) {
+    public Principal(String id, String username, String email) {
         this.id = id;
         this.username = username;
-        this.fName = fName;
+        this.email = email;
     }
 
     public String getId() {
@@ -39,12 +39,12 @@ public class Principal {
         this.username = username;
     }
 
-    public String getfName() {
-        return fName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Principal {
         return "Principal{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", fName='" + fName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

@@ -26,7 +26,7 @@ public class TokenGenerator {
                 .setId(subject.getId())
                 .setSubject(subject.getUsername())
                 .setIssuer("planit")
-                .claim("name", subject.getfName())
+                .claim("email", subject.getEmail())
                 .setIssuedAt(new Date(now))
                 .setExpiration(new Date(now + jwtConfig.getExpiration()))
                 .signWith(jwtConfig.getSigAlg(), jwtConfig.getSigningKey());

@@ -59,6 +59,6 @@ public class TokenService {
         return subject != null &&
                 subject.getId() != null && !subject.getId().equals("") &&
                 subject.getUsername() != null && !subject.getUsername().equals("") &&
-                subject.getfName() != null && !subject.getfName().equals("");
+                subject.getEmail() != null && !subject.getEmail().equals("");
     }
 }
